@@ -2,12 +2,12 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.33
+Version:	2.33.1
 Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-# Source0-md5:	8724eccb8933eedec31a06206c79e74d
+# Source0-md5:	a6e0a5350d12526d0269373d3381f15a
 Patch0:		%{name}-shell.patch
 Icon:		clisp.gif
 URL:		http://clisp.cons.org/
