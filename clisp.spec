@@ -2,7 +2,7 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.28
-Release:	1
+Release:	2
 Icon:		clisp.gif
 License:	GPL
 Group:		Development/Languages
@@ -104,8 +104,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/clisp/full/lisp.run
 %{_libdir}/clisp/full/makevars
 %{_libdir}/clisp/linkkit
+%{_datadir}/locale/en/LC_MESSAGES/*
 %lang(de) %{_datadir}/locale/de/LC_MESSAGES/*
-%lang(en) %{_datadir}/locale/en/LC_MESSAGES/*
 %lang(es) %{_datadir}/locale/es/LC_MESSAGES/*
 %lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/*
 %lang(nl) %{_datadir}/locale/nl/LC_MESSAGES/*
