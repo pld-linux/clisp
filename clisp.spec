@@ -6,8 +6,6 @@ Release:	1
 Icon:		clisp.gif
 License:	GPL
 Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://cvs2.cons.org/pub/lisp/clisp/source/latest/%{name}-%{version}.tar.bz2
 #Alternatively http://prdownloads.sourceforge.net/clisp/clisp-2.27.tar.bz2
 Patch0:		%{name}-shell.patch
