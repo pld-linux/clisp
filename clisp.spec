@@ -7,6 +7,7 @@ Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://cvs2.cons.org/pub/lisp/clisp/source/latest/%{name}-%{version}.tar.bz2
+# Source0-md5:	29e80e430c6098c78dbd2e56334aaa90
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-no_LIBC.patch
 Icon:		clisp.gif
