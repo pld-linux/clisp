@@ -69,7 +69,9 @@ software livre, distribuído sob os termos da GNU GPL.
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
-#%{__perl} -pi -e "s@' -O2?@' %{rpmcflags}@" src/makemake.in
+# -fno-strict-aliasing seems to fix crashes on amd64 but doesn't fix
+# random crashes on sparc (which occur with default CFLAGS)
+#%{__perl} -pi -e "s@' -O2?([^0])@' %{rpmcflags} -fno-strict-aliasing\$1@" src/makemake.in
 
 %build
 ./configure \
