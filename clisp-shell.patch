@@ -1,13 +1,14 @@
---- clisp-2.27/src/makemake.in~	Mon Jun 25 16:54:46 2001
-+++ clisp-2.27/src/makemake.in	Sat Dec  1 11:22:09 2001
-@@ -282,8 +282,8 @@
-      # Assume we are on Unix, and target=host (not cross-compiling).
+diff -Nru clisp-2.31.orig/src/makemake.in clisp-2.31/src/makemake.in
+--- clisp-2.31.orig/src/makemake.in	2003-11-10 17:18:23.000000000 +0100
++++ clisp-2.31/src/makemake.in	2003-11-10 17:21:18.000000000 +0100
+@@ -306,8 +306,8 @@
       CROSS=false
-      # Some shells (A/UX and OSF/1) need the parentheses around "arch" below.
--     HSYS=`((arch) 2>/dev/null || uname -m 2>/dev/null) | $tolower` # system name in lowercase
--     HSYSOS=`((uname) 2>/dev/null || arch 2>/dev/null) | $tolower` # OS name in lowercase
-+     HSYS=`( (arch) 2>/dev/null || uname -m 2>/dev/null) | $tolower` # system name in lowercase
-+     HSYSOS=`( (uname) 2>/dev/null || arch 2>/dev/null) | $tolower` # OS name in lowercase
-      if [ "$HSYS" = 386bsd -o "$HSYS" = sun386 -o "$HSYS" = "386/at" -o "$HSYS" = i86pc ] ; then
-        HSYS='i386'
-      fi
+      if [ -z "$HSYS" ]; then # not win32gcc
+        # some shells (A/UX and OSF/1) need the parentheses around "arch" below.
+-       HSYS=`((arch) 2>/dev/null || uname -m 2>/dev/null) | $tolower` # system name in lowercase
+-       HSYSOS=`((uname) 2>/dev/null || arch 2>/dev/null) | $tolower` # OS name in lowercase
++       HSYS=`( (arch) 2>/dev/null || uname -m 2>/dev/null) | $tolower` # system name in lowercase
++       HSYSOS=`( (uname) 2>/dev/null || arch 2>/dev/null) | $tolower` # OS name in lowercase
+        if [ "$HSYS" = 386bsd -o "$HSYS" = sun386 -o "$HSYS" = "386/at" -o "$HSYS" = i86pc ] ; then
+          HSYS='i386'
+        fi
