@@ -2,12 +2,12 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.30
-Release:	2
+Version:	2.31
+Release:	0.1
 License:	GPL
 Group:		Development/Languages
-Source0:	ftp://cvs2.cons.org/pub/lisp/clisp/source/latest/%{name}-%{version}.tar.bz2
-# Source0-md5:	29e80e430c6098c78dbd2e56334aaa90
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+# Source0-md5:	44bf68b218721540be60250fc1259483
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-no_LIBC.patch
 Icon:		clisp.gif
