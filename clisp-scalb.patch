@@ -1,0 +1,30 @@
+Index: linux.lisp
+===================================================================
+RCS file: /cvsroot/clisp/clisp/modules/bindings/glibc/linux.lisp,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -w -b -u -b -w -i -B -r1.4 -r1.5
+--- linux.lisp	7 Aug 2003 20:23:56 -0000	1.4
++++ linux.lisp	11 Sep 2003 17:11:41 -0000	1.5
+@@ -873,8 +873,8 @@
+ ;    (:arguments (x double-float) (iptr (c-ptr double-float) :out))
+ ;  (:return-type double-float))
+ (def-call-out rint (:arguments (x double-float)) (:return-type double-float))
+-(def-call-out scalb (:arguments (x double-float) (n double-float))
+-  (:return-type double-float))
++;(def-call-out scalb (:arguments (x double-float) (n double-float))
++;  (:return-type double-float))
+ (def-call-out nextafter (:arguments (x double-float) (y double-float))
+   (:return-type double-float))
+ (def-call-out remainder (:arguments (x double-float) (y double-float))
+@@ -964,8 +964,8 @@
+ ;    (:arguments (x single-float) (iptr (c-ptr single-float) :out))
+ ;  (:return-type single-float))
+ (def-call-out rintf (:arguments (x single-float)) (:return-type single-float))
+-(def-call-out scalbf (:arguments (x single-float) (n single-float))
+-  (:return-type single-float))
++;(def-call-out scalbf (:arguments (x single-float) (n single-float))
++;  (:return-type single-float))
+ (def-call-out nextafterf (:arguments (x single-float) (y single-float))
+   (:return-type single-float))
+ (def-call-out remainderf (:arguments (x single-float) (y single-float))
