@@ -1,0 +1,12 @@
+diff -Nru clisp-2.30.orig/modules/wildcard/Makefile.in clisp-2.30/modules/wildcard/Makefile.in
+--- clisp-2.30.orig/modules/wildcard/Makefile.in	Sat Apr  1 02:17:50 2000
++++ clisp-2.30/modules/wildcard/Makefile.in	Mon Mar 31 11:38:17 2003
+@@ -24,7 +24,7 @@
+ 	$(CC) $(CFLAGS) -I$(INCLUDES) -c wildcard.c
+ 
+ fnmatch.o : fnmatch.c fnmatch.h
+-	$(CC) $(CFLAGS) -I. -DHAVE_CONFIG_H -D_LIBC -c fnmatch.c
++	$(CC) $(CFLAGS) -I. -DHAVE_CONFIG_H -c fnmatch.c
+ 
+ # Make a module
+ clisp-module : all
