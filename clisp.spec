@@ -2,13 +2,13 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.28
-Release:	2
-Icon:		clisp.gif
+Release:	3
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://cvs2.cons.org/pub/lisp/clisp/source/latest/%{name}-%{version}.tar.bz2
 #Alternatively http://prdownloads.sourceforge.net/clisp/clisp-2.27.tar.bz2
 Patch0:		%{name}-shell.patch
+Icon:		clisp.gif
 URL:		http://clisp.cons.org/
 BuildRequires:	readline-devel
 BuildRequires:	gettext-devel
@@ -84,10 +84,12 @@ cd ..
 mkdir $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
 install modules/*/*.dvi $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
 
+%find_lang %{name} --all-name
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/clisp
 %doc %{_docdir}/%{name}-%{version}
@@ -101,12 +103,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/clisp/data
 %{_libdir}/clisp/full/*.[aho]
 %{_libdir}/clisp/full/lispinit.mem
-%attr(755,root,root) %{_libdir}/clisp/full/lisp.run
 %{_libdir}/clisp/full/makevars
 %{_libdir}/clisp/linkkit
-%{_datadir}/locale/en/LC_MESSAGES/*
-%lang(de) %{_datadir}/locale/de/LC_MESSAGES/*
-%lang(es) %{_datadir}/locale/es/LC_MESSAGES/*
-%lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/*
-%lang(nl) %{_datadir}/locale/nl/LC_MESSAGES/*
 %{_mandir}/man[13]/*
