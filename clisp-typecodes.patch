@@ -1,71 +1,17 @@
---- clisp-2.31/src/spvw_debug.d.orig	Thu Jul 24 22:45:23 2003
-+++ clisp-2.31/src/spvw_debug.d	Fri Dec  5 16:31:41 2003
-@@ -255,9 +255,16 @@
-       default: fputs("**UNKNOWN**",out);
-     }
-     fprintf(out," 0x%X>",as_oint(obj));
--  } else if (varobjectp(obj))
-+  } else
-+#ifdef TYPECODES
-+    if (1)
-+    fprintf(out,"#<varobject type=%d address=0x%X>",
-+            TheRecord(obj)->rectype,ThePointer(obj));
-+#else
-+    if (varobjectp(obj))
-     fprintf(out,"#<varobject type=%d address=0x%X>",
-             varobject_type(TheVarobject(obj)),ThePointer(obj));
-+#endif
-   else fprintf(out,"#<huh?! address=0x%X>",ThePointer(obj));
-  #undef XOUT
- }
---- clisp-2.31/src/lispbibl.d.orig	Mon Sep  1 22:50:33 2003
-+++ clisp-2.31/src/lispbibl.d	Fri Dec  5 15:58:44 2003
-@@ -3413,6 +3413,8 @@
-   #define dfloat_type     (     BTB5     |BTB3     |BTB1     ) # 0x2A  # %00101010  ; double-float
-   #define complex_type    (     BTB5     |BTB3|BTB2          ) # 0x2C  # %00101100  ; complex
-   #define lfloat_type     (     BTB5     |BTB3|BTB2|BTB1     ) # 0x2E  # %00101110  ; long-float
-+  #define snilvector_type (     BTB5|BTB4     |BTB2|BTB1|BTB0) # 0x37  # %00110111
-+  #define nilvector_type  (     BTB5|BTB4|BTB3|BTB2|BTB1|BTB0) # 0x3F  # %00111111
-   #if (TB6 >= 0)
-   #define cons_type       (BTB6                              ) # 0x40  # %01000000  ; cons
+--- clisp-2.33.1/src/genclisph.d.orig	2004-05-22 13:33:44.000000000 +0200
++++ clisp-2.33.1/src/genclisph.d	2004-05-31 20:39:28.545141007 +0200
+@@ -864,13 +864,13 @@
+   printf("#define sstring_length(ptr)  sarray_length(ptr)\n");
+   printf("#define Sstring_length(obj)  sstring_length(TheSstring(obj))\n");
+   printf("extern bool string_equal (object string1, object string2);\n");
+-  /*
+   #ifdef TYPECODES
+    printf("#define Array_type_simple_bit_vector(atype)  (%d+((atype)<<%d)",Array_type_sbvector,TB0);
+    if (TB0+1 != TB1) printf("+((atype)&%d)",bit(TB0+1)-bit(TB1));
+    if (TB1+1 != TB2) printf("+((atype)&%d)",bit(TB1+1)-bit(TB2));
+    printf(")\n");
    #endif
-@@ -4603,10 +4605,10 @@
- #define Atype_32Bit  5
- #define Atype_T      6
- #define Atype_Char   7
--#ifndef TYPECODES
-+/*#ifndef TYPECODES*/
- /* (ARRAY NIL) has an Array_type_snilvector data vector */
- #define Atype_NIL    8
--#endif
-+/*#endif*/
- 
- # array-types
- #ifdef TYPECODES
-@@ -4628,6 +4630,8 @@
-   #define Array_type_sb32vector  sb32vector_type   # Sbvector
-   #define Array_type_sstring     sstring_type      # Sstring
-   #define Array_type_svector     svector_type      # Svector
-+  #define Array_type_nilvector   nilvector_type    # Iarray
-+  #define Array_type_snilvector  snilvector_type   # Lrecord
-   # Array_type_simple_bit_vector(atype)
-   # maps Atype_[n]Bit to Array_type_sb[n]vector. Depends on TB0, TB1, TB2.
-   # The formula works because there are only 4 possible cases:
-@@ -5288,7 +5292,7 @@
- #define cclosure_length(ptr)  srecord_length(ptr)
- #define Cclosure_length(obj)  cclosure_length(TheCclosure(obj))
- #ifdef TYPECODES
--  #define cclosure_flags(ptr)  ((ptr)->flags)
-+  #define cclosure_flags(ptr)  ((ptr)->recflags)
- #else
-   #define cclosure_flags(ptr)  record_flags(ptr)
- #endif
-@@ -6564,6 +6568,8 @@
-   #define case_Rectype_number_above
-   #define case_Rectype_float_above
-   #define case_Rectype_integer_above
-+  #define case_Rectype_nilvector_above
-+  #define case_Rectype_Snilvector_above
- #else
-   #define case_Rectype_Closure_above  \
-     case Rectype_Closure: goto case_closure;
++  /*
+   sprintf(buf,"struct { XRECORD_HEADER gcv_object_t pack_external_symbols%s; gcv_object_t pack_internal_symbols%s; gcv_object_t pack_shadowing_symbols%s; gcv_object_t pack_use_list%s; gcv_object_t pack_used_by_list%s; gcv_object_t pack_name%s; gcv_object_t pack_nicknames%s; } *",attribute_aligned_object,attribute_aligned_object,attribute_aligned_object,attribute_aligned_object,attribute_aligned_object,attribute_aligned_object,attribute_aligned_object);
+   emit_typedef(buf,"Package");
+   */
