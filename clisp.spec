@@ -1,5 +1,6 @@
 Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
+Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.28
 Release:	3
@@ -51,6 +52,14 @@ Interfejs u¿ytkownika dostêpny jest po niemiecku, angielsku, francusku
 i hiszpañsku. CLISP zawiera interpreter, kompilator, znaczny podzbiór
 CLOS, interfejs do innych jêzyków oraz interfejs do gniazdek.
 Interfejs X11 jest dostêpny poprzez CLX i Garnet.
+
+%description -l pt_BR
+Common Lisp é uma linguagem de programação de propósito geral de alto
+nível. CLISP é uma implementação do Common Lisp feita por Bruno
+Haible, da Universidade Karlsruhe, e Michael Stoll, da Universidade de
+Munique, ambas na Alemanha. O CLISP é quase totalmente compatível com
+o Common Lisp descrito pelo padrão ANSI CL. Além disso, CLISP é
+software livre, distribuído sob os termos da GNU GPL.
 
 %prep
 %setup -q
