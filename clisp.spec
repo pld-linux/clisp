@@ -14,6 +14,7 @@ Patch0:		%{name}-shell.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	readline-devel
 BuildRequires:	gettext-devel
+BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
