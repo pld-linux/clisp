@@ -3,17 +3,18 @@ Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.33.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
 # Source0-md5:	a6e0a5350d12526d0269373d3381f15a
 Patch0:		%{name}-shell.patch
+Patch1:		%{name}-typecodes.patch
 Icon:		clisp.gif
 URL:		http://clisp.cons.org/
-BuildRequires:	readline-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,9 +65,15 @@ software livre, distribuído sob os termos da GNU GPL.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+# changing default -O to optflags causes memory fault on amd64
+# - so something is broken... code or compiler
+#%{__perl} -pi -e "s@' -O2?@' %{rpmcflags}@" src/makemake.in
 
 %build
-./configure --prefix=%{_prefix}
+./configure \
+	--prefix=%{_prefix}
 cd src
 ./makemake \
 	--prefix=%{_prefix} \
@@ -81,19 +88,20 @@ cd src
 	--with-module=syscalls \
 	>Makefile
 %{__make} config.lisp
-%{__make}
+%{__make} \
+	libdir=%{_libdir}
 #make check
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd src
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_docdir},%{_libdir},%{_mandir}}
-%{__make} install \
+
+%{__make} -C src install \
 	DESTDIR=$RPM_BUILD_ROOT \
+	libdir=%{_libdir} \
 	lispdocdir=%{_docdir}/%{name}-%{version} \
 	mandir=%{_mandir}
-cd ..
-mkdir $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
+
+install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
 install modules/*/*.dvi $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
 
 %find_lang %{name} --all-name
@@ -110,10 +118,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/clisp/base/*.[aho]
 %{_libdir}/clisp/base/lispinit.mem
 %attr(755,root,root) %{_libdir}/clisp/base/lisp.run
-%attr(755,root,root) %{_libdir}/clisp/full/lisp.run
 %{_libdir}/clisp/base/makevars
 %{_libdir}/clisp/clisp-link
 %{_libdir}/clisp/data
+%dir %{_libdir}/clisp/full
+%attr(755,root,root) %{_libdir}/clisp/full/lisp.run
 %{_libdir}/clisp/full/*.[aho]
 %{_libdir}/clisp/full/lispinit.mem
 %{_libdir}/clisp/full/makevars
