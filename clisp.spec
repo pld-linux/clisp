@@ -98,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/clisp/base/*.[aho]
 %{_libdir}/clisp/base/lispinit.mem
 %attr(755,root,root) %{_libdir}/clisp/base/lisp.run
+%attr(755,root,root) %{_libdir}/clisp/full/lisp.run
 %{_libdir}/clisp/base/makevars
 %{_libdir}/clisp/clisp-link
 %{_libdir}/clisp/data
