@@ -1,7 +1,7 @@
 Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.27
+Version:	2.28
 Release:	1
 Icon:		clisp.gif
 License:	GPL
