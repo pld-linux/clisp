@@ -8,6 +8,7 @@ License:	GPL
 Group:		Development/Languages
 Source0:	ftp://cvs2.cons.org/pub/lisp/clisp/source/latest/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-shell.patch
+Patch1:		%{name}-no_LIBC.patch
 Icon:		clisp.gif
 URL:		http://clisp.cons.org/
 BuildRequires:	readline-devel
@@ -63,6 +64,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./configure --prefix=%{_prefix}
