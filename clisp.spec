@@ -77,7 +77,7 @@ cd src
 	--with-dynamic-ffi \
 	--with-module=wildcard \
 	--with-module=regexp \
-	--with-module=bindings/linuxlibc6 \
+	--with-module=bindings/glibc \
 	>Makefile
 %{__make} config.lisp
 %{__make}
