@@ -3,13 +3,15 @@ Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.31
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 # Source0-md5:	44bf68b218721540be60250fc1259483
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-no_LIBC.patch
+Patch2:		%{name}-configure.patch
+Patch3:		%{name}-scalb.patch
 Icon:		clisp.gif
 URL:		http://clisp.cons.org/
 BuildRequires:	readline-devel
@@ -66,6 +68,12 @@ software livre, distribuído sob os termos da GNU GPL.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+cd src                                                                                                                                  
+%patch2 -p0 -b .configure                                                                                                               
+cd ..                                                                                                                                   
+cd modules/bindings/glibc                                                                                                               
+%patch3 -p0 -b .scalb                                                                                                                   
+cd ../../..                                                                                                                             
 
 %build
 ./configure --prefix=%{_prefix}
@@ -75,9 +83,12 @@ cd src
 	--with-readline \
 	--with-gettext \
 	--with-dynamic-ffi \
+	--fsstnd=redhat \
 	--with-module=wildcard \
 	--with-module=regexp \
 	--with-module=bindings/glibc \
+	--with-module=clx/new-clx \
+	--with-module=syscalls \
 	>Makefile
 %{__make} config.lisp
 %{__make}
