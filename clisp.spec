@@ -1,4 +1,5 @@
 Summary:	Common Lisp (ANSI CL) implementation
+Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.27
 Release:	1
@@ -34,6 +35,24 @@ includes an interpreter, a compiler, a large subset of CLOS, a foreign
 language interface and a socket interface. An X11 interface is
 available through CLX and Garnet.
 
+%description -l pl
+Common Lisp to wysokopoziomowy jêzyk programowania ogólnego
+przeznaczenia. CLISP to implementacja Common Lisp, której autorami s±
+Bruno Haible z Karlsruhe University oraz Michael Stoll z Munich
+University (oba w Niemczech). W wiêkszo¶ci wspiera Common Lisp opisany
+w standardzie ANSI CL. Dzia³a na mikrokomputerach (DOS, OS/2, Windows
+NT, Windows 95, Amiga 500-4000, Acorn RICS PC), a tak¿e stacjach
+uniksowych (Linux, SVR4, Sun4, DEC Alpha OSF, HP-UX, NeXTstep, SGI,
+AIX, Sun3 i inne) i wymaga tylko 2 MB RAM.
+
+To jest oprogramowanie wolnodostêpne, na licencji GNU GPL, mo¿liwe
+jest dystrybuowanie komercyjnych aplikacji skompilowanych CLISP-em.
+
+Interfejs u¿ytkownika dostêpny jest po niemiecku, angielsku, francusku
+i hiszpañsku. CLISP zawiera interpreter, kompilator, znaczny podzbiór
+CLOS, interfejs do innych jêzyków oraz interfejs do gniazdek.
+Interfejs X11 jest dostêpny poprzez CLX i Garnet.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -64,7 +83,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_docdir},%{_libdir},%{_mandir}}
 	mandir=%{_mandir}
 cd ..
 mkdir $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
-cp modules/*/*.dvi $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
+install modules/*/*.dvi $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
 
 %clean
 rm -rf $RPM_BUILD_ROOT
