@@ -2,14 +2,13 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.33.2
+Version:	2.34
 Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	ee4ea316db1e843dcb16094bf500012f
+# Source0-md5:	68b20ad2d13bdc544e57000e38c856de
 Patch0:		%{name}-shell.patch
-Patch1:		%{name}-typecodes.patch
 Icon:		clisp.gif
 URL:		http://clisp.cons.org/
 BuildRequires:	gettext-devel
@@ -65,7 +64,6 @@ software livre, distribuído sob os termos da GNU GPL.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
