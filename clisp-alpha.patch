@@ -1,0 +1,35 @@
+--- clisp-2.35/src/spvw.d.orig	2005-08-18 18:56:55.000000000 +0200
++++ clisp-2.35/src/spvw.d	2005-10-10 13:25:37.000000000 +0200
+@@ -2671,6 +2671,10 @@
+       # Don't use more than 36 address bits, otherwise mmap() fails.
+       part &= 0x0000000FFFFFFFFFUL;
+       #endif
++      #if defined(DECALPHA) && defined(UNIX_LINUX)
++      # Don't use more than 40 address bits, otherwise mmap() fails.
++      part &= 0x000000FFFFFFFFFFUL;
++      #endif
+       mem.heaps[0].heap_limit = start + round_down(1*part,map_pagesize);
+       mem.heaps[1].heap_limit = start + round_down(4*part,map_pagesize);
+       #endif
+@@ -2713,6 +2717,10 @@
+       # Don't use more than 36 address bits, otherwise mmap() fails.
+       part &= 0x0000000FFFFFFFFFUL;
+       #endif
++      #if defined(DECALPHA) && defined(UNIX_LINUX)
++      # Don't use more than 40 address bits, otherwise mmap() fails.
++      part &= 0x000000FFFFFFFFFFUL;
++      #endif
+       mem.heaps[0].heap_limit = start + round_down(1*part,map_pagesize);
+       mem.heaps[0].heap_hardlimit =
+         mem.heaps[1].heap_limit = start + round_down(2*part,map_pagesize);
+--- clisp-2.35/src/lispbibl.d.orig	2005-08-26 18:43:19.000000000 +0200
++++ clisp-2.35/src/lispbibl.d	2005-10-10 13:09:09.000000000 +0200
+@@ -3087,7 +3087,7 @@
+ #endif
+ 
+ 
+-#if (oint_addr_shift == 0) && (addr_shift == 0) && defined(TYPECODES) && !defined(WIDE_SOFT) && !(defined(SUN3) && !defined(UNIX_SUNOS4) && !defined(WIDE_SOFT)) && !(defined(AMD64) && defined(UNIX_LINUX))
++#if (oint_addr_shift == 0) && (addr_shift == 0) && defined(TYPECODES) && !defined(WIDE_SOFT) && !(defined(SUN3) && !defined(UNIX_SUNOS4) && !defined(WIDE_SOFT)) && !(defined(AMD64) && defined(UNIX_LINUX)) && !(defined(DECALPHA) && defined(UNIX_LINUX))
+ # If the address bits are the lower ones and not WIDE_SOFT,
+ # memory mapping may be possible.
+ 
