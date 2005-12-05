@@ -2,17 +2,18 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.35
+Version:	2.36
 Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	a8e3136c4ecfb5deb65fe53e22ca2c07
+# Source0-md5:	b6b5f6b7e6d0ce9f42bc07d59fbddc09
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
 Icon:		clisp.gif
 URL:		http://clisp.cons.org/
 BuildRequires:	gettext-devel
+BuildRequires:	libsigsegv
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -85,10 +86,8 @@ cd src
 	--with-dynamic-ffi \
 	--fsstnd=redhat \
 	--with-module=wildcard \
-	--with-module=regexp \
 	--with-module=bindings/glibc \
 	--with-module=clx/new-clx \
-	--with-module=syscalls \
 	>Makefile
 %{__make} config.lisp
 %{__make} \
