@@ -1,4 +1,5 @@
 #
+# Conditional build:
 %bcond_without	tests # run test suite `make check'
 #
 Summary:	Common Lisp (ANSI CL) implementation
@@ -78,8 +79,9 @@ software livre, distribuído sob os termos da GNU GPL.
 #%{__perl} -pi -e "s@' -O2?([^0])@' %{rpmcflags} -fno-strict-aliasing\$1@" src/makemake.in
 
 %build
-CC="%{__cc}" ./configure \
-		--prefix=%{_prefix} 
+CC="%{__cc}" \
+./configure \
+	--prefix=%{_prefix} 
 
 cd src
 ./makemake \
