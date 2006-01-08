@@ -1,13 +1,16 @@
+#
+%bcond_without	tests # run test suite `make check'
+#
 Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.36
-Release:	1
+Version:	2.37
+Release:	1	
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	b6b5f6b7e6d0ce9f42bc07d59fbddc09
+# Source0-md5:	f2445b3935b6f97b443d9548c38872e9
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
 Icon:		clisp.gif
@@ -75,8 +78,8 @@ software livre, distribuído sob os termos da GNU GPL.
 #%{__perl} -pi -e "s@' -O2?([^0])@' %{rpmcflags} -fno-strict-aliasing\$1@" src/makemake.in
 
 %build
-./configure \
-	--prefix=%{_prefix}
+CC="%{__cc}" ./configure \
+		--prefix=%{_prefix} 
 
 cd src
 ./makemake \
@@ -92,7 +95,8 @@ cd src
 %{__make} config.lisp
 %{__make} \
 	libdir=%{_libdir}
-#make check
+
+%{?with_tests:%{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
