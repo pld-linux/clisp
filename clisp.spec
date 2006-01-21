@@ -14,7 +14,6 @@ Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
 # Source0-md5:	f2445b3935b6f97b443d9548c38872e9
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
-Icon:		clisp.gif
 URL:		http://clisp.cons.org/
 BuildRequires:	gettext-devel
 BuildRequires:	libsigsegv
