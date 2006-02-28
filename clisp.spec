@@ -7,7 +7,7 @@ Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.37
-Release:	1	
+Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
@@ -80,7 +80,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %build
 CC="%{__cc}" \
 ./configure \
-	--prefix=%{_prefix} 
+	--prefix=%{_prefix}
 
 cd src
 ./makemake \
