@@ -6,17 +6,17 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.37
+Version:	2.39
 Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	f2445b3935b6f97b443d9548c38872e9
+# Source0-md5:	70ea408e7c9b69d5feb5e408084ecfff
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	gettext-devel
-BuildRequires:	libsigsegv
+BuildRequires:	libsigsegv >= 2.4
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
