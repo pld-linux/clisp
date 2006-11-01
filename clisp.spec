@@ -7,7 +7,7 @@ Summary(pl):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.41
-Release:	1
+Release:	0.1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
@@ -19,6 +19,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	libsigsegv >= 2.4
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
+BuildRequires:  xorg-lib-libX11-devel
+BuildRequires:  xorg-proto-xextproto-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
