@@ -19,9 +19,9 @@ BuildRequires:	gettext-devel
 BuildRequires:	libsigsegv >= 2.4
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
-BuildRequires:  xorg-lib-libX11-devel
-BuildRequires:  xorg-lib-libXpm-devel
-BuildRequires:  xorg-proto-xextproto-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXpm-devel
+BuildRequires:	xorg-proto-xextproto-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
