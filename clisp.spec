@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests # run test suite `make check'
+%bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
 #
 Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl):	Implementacja Common Lisp (ANSI CL)
