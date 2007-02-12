@@ -3,8 +3,8 @@
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
 #
 Summary:	Common Lisp (ANSI CL) implementation
-Summary(pl.UTF-8):   Implementacja Common Lisp (ANSI CL)
-Summary(pt_BR.UTF-8):   Implementação do Common Lisp (ANSI CL)
+Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
+Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.41
 Release:	2	
