@@ -3,8 +3,8 @@
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
 #
 Summary:	Common Lisp (ANSI CL) implementation
-Summary(pl):	Implementacja Common Lisp (ANSI CL)
-Summary(pt_BR):	Implementação do Common Lisp (ANSI CL)
+Summary(pl.UTF-8):   Implementacja Common Lisp (ANSI CL)
+Summary(pt_BR.UTF-8):   ImplementaÃ§Ã£o do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.41
 Release:	2	
@@ -43,31 +43,31 @@ includes an interpreter, a compiler, a large subset of CLOS, a foreign
 language interface and a socket interface. An X11 interface is
 available through CLX and Garnet.
 
-%description -l pl
-Common Lisp to wysokopoziomowy jêzyk programowania ogólnego
-przeznaczenia. CLISP to implementacja Common Lisp, której autorami s±
+%description -l pl.UTF-8
+Common Lisp to wysokopoziomowy jÄ™zyk programowania ogÃ³lnego
+przeznaczenia. CLISP to implementacja Common Lisp, ktÃ³rej autorami sÄ…
 Bruno Haible z Karlsruhe University oraz Michael Stoll z Munich
-University (oba w Niemczech). W wiêkszo¶ci wspiera Common Lisp opisany
-w standardzie ANSI CL. Dzia³a na mikrokomputerach (DOS, OS/2, Windows
-NT, Windows 95, Amiga 500-4000, Acorn RICS PC), a tak¿e stacjach
+University (oba w Niemczech). W wiÄ™kszoÅ›ci wspiera Common Lisp opisany
+w standardzie ANSI CL. DziaÅ‚a na mikrokomputerach (DOS, OS/2, Windows
+NT, Windows 95, Amiga 500-4000, Acorn RICS PC), a takÅ¼e stacjach
 uniksowych (Linux, SVR4, Sun4, DEC Alpha OSF, HP-UX, NeXTstep, SGI,
 AIX, Sun3 i inne) i wymaga tylko 2 MB RAM.
 
-To jest oprogramowanie wolnodostêpne, na licencji GNU GPL, mo¿liwe
+To jest oprogramowanie wolnodostÄ™pne, na licencji GNU GPL, moÅ¼liwe
 jest dystrybuowanie komercyjnych aplikacji skompilowanych CLISP-em.
 
-Interfejs u¿ytkownika dostêpny jest po niemiecku, angielsku, francusku
-i hiszpañsku. CLISP zawiera interpreter, kompilator, znaczny podzbiór
-CLOS, interfejs do innych jêzyków oraz interfejs do gniazdek.
-Interfejs X11 jest dostêpny poprzez CLX i Garnet.
+Interfejs uÅ¼ytkownika dostÄ™pny jest po niemiecku, angielsku, francusku
+i hiszpaÅ„sku. CLISP zawiera interpreter, kompilator, znaczny podzbiÃ³r
+CLOS, interfejs do innych jÄ™zykÃ³w oraz interfejs do gniazdek.
+Interfejs X11 jest dostÄ™pny poprzez CLX i Garnet.
 
-%description -l pt_BR
-Common Lisp é uma linguagem de programação de propósito geral de alto
-nível. CLISP é uma implementação do Common Lisp feita por Bruno
+%description -l pt_BR.UTF-8
+Common Lisp Ã© uma linguagem de programaÃ§Ã£o de propÃ³sito geral de alto
+nÃ­vel. CLISP Ã© uma implementaÃ§Ã£o do Common Lisp feita por Bruno
 Haible, da Universidade Karlsruhe, e Michael Stoll, da Universidade de
-Munique, ambas na Alemanha. O CLISP é quase totalmente compatível com
-o Common Lisp descrito pelo padrão ANSI CL. Além disso, CLISP é
-software livre, distribuído sob os termos da GNU GPL.
+Munique, ambas na Alemanha. O CLISP Ã© quase totalmente compatÃ­vel com
+o Common Lisp descrito pelo padrÃ£o ANSI CL. AlÃ©m disso, CLISP Ã©
+software livre, distribuÃ­do sob os termos da GNU GPL.
 
 %prep
 %setup -q
