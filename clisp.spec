@@ -1,3 +1,5 @@
+# TODO:
+# - review alpha patch
 #
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
@@ -6,15 +8,16 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.41
+Version:	2.45
 Release:	2	
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	3a7a00e82ebeeb72a75a032f84c36c6c
+# Source0-md5:	1f26ef23ca310366e328df925c23c663
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
 URL:		http://clisp.cons.org/
+BuildRequires:	ffcall-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libsigsegv >= 2.4
 BuildRequires:	ncurses-devel
@@ -72,7 +75,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
@@ -96,9 +99,11 @@ cd src
 	--with-module=bindings/glibc \
 	--with-module=clx/new-clx \
 	>Makefile
-%{__make} config.lisp
+%{__make} config.lisp \
+	TOPDIR=clisp
 %{__make} \
-	libdir=%{_libdir}
+	libdir=%{_libdir} \
+	TOPDIR=clisp
 
 %{?with_tests:%{__make} check}
 
@@ -109,7 +114,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir} \
 	lispdocdir=%{_docdir}/%{name}-%{version} \
-	mandir=%{_mandir}
+	mandir=%{_mandir} \
+	TOPDIR=clisp
 
 install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
 install modules/*/*.dvi $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
