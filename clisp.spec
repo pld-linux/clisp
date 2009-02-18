@@ -128,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/clisp
-%doc %{_docdir}/%{name}-%{version} src/ANNOUNCE
+%doc %{_docdir}/%{name}-%{version} 
 %dir %{_libdir}/clisp
 %dir %{_libdir}/clisp/base
 %{_libdir}/clisp/base/*.[aho]
