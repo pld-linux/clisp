@@ -99,18 +99,18 @@ cd src
 	--with-module=bindings/glibc \
 	--with-module=clx/new-clx \
 	>Makefile
-%{__make} config.lisp \
+%{__make} -j1 config.lisp \
 	TOPDIR=clisp
-%{__make} \
+%{__make} -j1 \
 	libdir=%{_libdir} \
 	TOPDIR=clisp
 
-%{?with_tests:%{__make} check}
+%{?with_tests:%{__make} -j1 check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -C src install \
+%{__make} -j1 -C src install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir} \
 	lispdocdir=%{_docdir}/%{name}-%{version} \
