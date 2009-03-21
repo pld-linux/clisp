@@ -84,6 +84,12 @@ software livre, distribuído sob os termos da GNU GPL.
 #%{__perl} -pi -e "s@' -O2?([^0])@' %{rpmcflags} -fno-strict-aliasing\$1@" src/makemake.in
 
 %build
+
+%ifarch ppc ppc64
+CFLAGS="%{rpmcflags} -DNO_GENERATIONAL_GC -DNO_MULTIMAP_FILE -DNO_SINGLEMAP"
+ulimit -s unlimited
+%endif
+
 CC="%{__cc}" \
 ./configure \
 	--prefix=%{_prefix}
