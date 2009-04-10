@@ -88,7 +88,11 @@ software livre, distribuído sob os termos da GNU GPL.
 
 %build
 
+%ifarch ppc ppc64
+ulimit -s unlimited
+%else
 ulimit -s 32768
+%endif
 
 CC="%{__cc}" \
 CFLAGS="%{rpmcflags}" \
