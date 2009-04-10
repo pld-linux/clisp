@@ -27,6 +27,9 @@ BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-proto-xextproto-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define specflags_ppc	-DNO_GENERATIONAL_GC
+%define specflags_ppc64	-DNO_GENERATIONAL_GC
+
 %description
 Common Lisp is a high-level, all-purpose programming language. CLISP
 is a Common Lisp implementation by Bruno Haible of Karlsruhe
@@ -85,12 +88,10 @@ software livre, distribuído sob os termos da GNU GPL.
 
 %build
 
-%ifarch ppc ppc64
-CFLAGS="%{rpmcflags} -DNO_GENERATIONAL_GC -DNO_MULTIMAP_FILE -DNO_SINGLEMAP"
-ulimit -s unlimited
-%endif
+ulimit -s 32768
 
 CC="%{__cc}" \
+CFLAGS="%{rpmcflags}" \
 ./configure \
 	--prefix=%{_prefix}
 
