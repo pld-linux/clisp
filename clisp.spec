@@ -16,6 +16,7 @@ Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
 # Source0-md5:	8fa89bb13e865fc7c7150b82682f35af
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
+Patch2:		%{name}-gcc4.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-devel
@@ -79,6 +80,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %setup -q
 %patch0 -p1
 #%patch1 -p1
+%patch2 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
