@@ -97,7 +97,11 @@ ulimit -s 32768
 %endif
 
 CC="%{__cc}" \
+%ifarch sparc sparcv9 sparc64
+CFLAGS="%{rpmcflags} -DSAFETY=3" \
+%else
 CFLAGS="%{rpmcflags}" \
+%endif
 ./configure \
 	--prefix=%{_prefix}
 
