@@ -1,11 +1,11 @@
---- clisp-2.49/src/bindings/glibc/linux.c~	2012-12-12 12:40:18.710628464 +0100
-+++ clisp-2.49/src/bindings/glibc/linux.c	2012-12-12 12:41:37.060625700 +0100
-@@ -3,7 +3,7 @@
- extern gcv_object_t module__linux__object_tab[];
- #include <stddef.h>
- #include <sys/types.h>
--#include <bits/ipctypes.h>
-+#include <sys/ipc.h>
- #include <errno.h>
- static int *clisp_errno_location(void);
- static int *clisp_errno_location() { return &errno; }
+--- clisp-2.49/modules/bindings/glibc/linux.lisp~	2008-10-08 18:36:19.000000000 +0200
++++ clisp-2.49/modules/bindings/glibc/linux.lisp	2012-12-12 12:50:41.830606483 +0100
+@@ -86,7 +86,7 @@
+ 
+ (def-c-type __key_t)            ; int
+ 
+-(c-lines "#include <bits/ipctypes.h>~%")
++(c-lines "#include <sys/ipc.h>~%")
+ (def-c-type __ipc_pid_t)        ; ushort
+ 
+ ; --------------------------- <sys/types.h> -----------------------------------
