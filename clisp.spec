@@ -8,15 +8,15 @@ Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.47
-Release:	7
+Version:	2.49
+Release:	1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://dl.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	8fa89bb13e865fc7c7150b82682f35af
+Source0:	http://download.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
+# Source0-md5:	1962b99d5e530390ec3829236d168649
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
-Patch2:		%{name}-gcc4.patch
+Patch2:		%{name}-glibc2.16.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-devel
