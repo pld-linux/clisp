@@ -1,5 +1,5 @@
---- /home/users/baggins/devel/PLD/rpm/BUILD/clisp-2.49/src/bindings/glibc/linux.c~	2012-12-12 12:40:18.710628464 +0100
-+++ /home/users/baggins/devel/PLD/rpm/BUILD/clisp-2.49/src/bindings/glibc/linux.c	2012-12-12 12:41:37.060625700 +0100
+--- clisp-2.49/src/bindings/glibc/linux.c~	2012-12-12 12:40:18.710628464 +0100
++++ clisp-2.49/src/bindings/glibc/linux.c	2012-12-12 12:41:37.060625700 +0100
 @@ -3,7 +3,7 @@
  extern gcv_object_t module__linux__object_tab[];
  #include <stddef.h>
