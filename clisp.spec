@@ -79,7 +79,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
+%patch1 -p1
 %patch2 -p1
 
 # changing default -O to optflags causes memory fault on amd64
@@ -130,13 +130,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 -C src install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir} \
-	lispdocdir=%{_docdir}/%{name}-%{version} \
+	docdir=%{_docdir}/%{name}-%{version} \
 	mandir=%{_mandir} \
 	TOPDIR=clisp
 
-install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
-install modules/*/*.dvi $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/modules
+# already packaged as man/html/pdf
+%{__rm} $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/doc/clisp*.{1,ps}
 
+# clisp and clisplow domains
 %find_lang %{name} --all-name
 
 %clean
@@ -145,6 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/clisp
+%attr(755,root,root) %{_bindir}/clisp-link
 %doc %{_docdir}/%{name}-%{version} 
 %dir %{_libdir}/clisp
 %dir %{_libdir}/clisp/base
@@ -152,12 +154,23 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/clisp/base/lispinit.mem
 %attr(755,root,root) %{_libdir}/clisp/base/lisp.run
 %{_libdir}/clisp/base/makevars
-%{_libdir}/clisp/clisp-link
+%{_libdir}/clisp/bindings
+%{_libdir}/clisp/build-aux
+%{_libdir}/clisp/clx
 %{_libdir}/clisp/data
-%dir %{_libdir}/clisp/full
-%attr(755,root,root) %{_libdir}/clisp/full/lisp.run
-%{_libdir}/clisp/full/*.[aho]
-%{_libdir}/clisp/full/lispinit.mem
-%{_libdir}/clisp/full/makevars
+%dir %{_libdir}/clisp/dynmod
+%{_libdir}/clisp/dynmod/*.lisp
+%attr(755,root,root) %{_libdir}/clisp/dynmod/lib-*.so
 %{_libdir}/clisp/linkkit
-%{_mandir}/man[13]/*
+%{_libdir}/clisp/wildcard
+%{_aclocaldir}/clisp.m4
+%{_mandir}/man1/clisp.1*
+%{_mandir}/man1/clisp-link.1*
+
+# TODO:
+#%{_datadir}/emacs/site-lisp/clhs.el
+#%{_datadir}/emacs/site-lisp/clisp-coding.el
+#%{_datadir}/emacs/site-lisp/clisp-ffi.el
+#%{_datadir}/emacs/site-lisp/clisp-indent.el
+#%{_datadir}/emacs/site-lisp/clisp-indent.lisp
+#%{_datadir}/vim/vimfiles/after/syntax/lisp.vim

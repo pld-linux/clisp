@@ -22,14 +22,14 @@
        mem.heaps[0].heap_limit = start + round_down(1*part,map_pagesize);
        mem.heaps[0].heap_hardlimit =
          mem.heaps[1].heap_limit = start + round_down(2*part,map_pagesize);
---- clisp-2.35/src/lispbibl.d.orig	2005-08-26 18:43:19.000000000 +0200
-+++ clisp-2.35/src/lispbibl.d	2005-10-10 13:09:09.000000000 +0200
-@@ -3087,7 +3087,7 @@
+--- clisp-2.49/src/lispbibl.d.orig	2012-12-13 18:49:18.149361417 +0100
++++ clisp-2.49/src/lispbibl.d	2012-12-13 18:56:22.232685912 +0100
+@@ -2979,7 +2979,7 @@
  #endif
  
  
--#if (oint_addr_shift == 0) && (addr_shift == 0) && defined(TYPECODES) && !defined(WIDE_SOFT) && !(defined(SUN3) && !defined(UNIX_SUNOS4) && !defined(WIDE_SOFT)) && !(defined(AMD64) && defined(UNIX_LINUX))
-+#if (oint_addr_shift == 0) && (addr_shift == 0) && defined(TYPECODES) && !defined(WIDE_SOFT) && !(defined(SUN3) && !defined(UNIX_SUNOS4) && !defined(WIDE_SOFT)) && !(defined(AMD64) && defined(UNIX_LINUX)) && !(defined(DECALPHA) && defined(UNIX_LINUX))
- # If the address bits are the lower ones and not WIDE_SOFT,
- # memory mapping may be possible.
+-#if (oint_addr_shift == 0) && (addr_shift == 0) && defined(TYPECODES) && !defined(WIDE_SOFT) && !(defined(AMD64) && defined(UNIX_LINUX))
++#if (oint_addr_shift == 0) && (addr_shift == 0) && defined(TYPECODES) && !defined(WIDE_SOFT) && !(defined(AMD64) && defined(UNIX_LINUX)) && !(defined(DECALPHA) && defined(UNIX_LINUX))
+ /* If the address bits are the lower ones and not WIDE_SOFT,
+  memory mapping may be possible. */
  
