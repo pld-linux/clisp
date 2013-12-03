@@ -16,7 +16,7 @@ Source0:	http://download.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
 # Source0-md5:	1962b99d5e530390ec3829236d168649
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
-Patch2:		%{name}-glibc2.16.patch
+Patch2:		%{name}-glibc.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-devel
