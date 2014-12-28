@@ -19,7 +19,7 @@ Patch1:		%{name}-alpha.patch
 Patch2:		%{name}-glibc.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libsigsegv >= 2.4
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
