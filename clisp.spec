@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.49
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Languages
 Source0:	http://download.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
@@ -19,6 +19,7 @@ Patch1:		%{name}-alpha.patch
 Patch2:		%{name}-glibc.patch
 # https://sourceforge.net/p/clisp/bugs/688/attachment/patch-modules_readline_readline.lisp
 Patch3:		%{name}-readline.patch
+Patch4:		x32.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-tools
@@ -84,6 +85,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p0
+%patch4 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
@@ -103,9 +105,14 @@ CC="%{__cc}" \
 %ifarch sparc sparcv9 sparc64
 CFLAGS="%{rpmcflags} -DSAFETY=3" \
 %else
+%ifarch %{ix86} x32
+CFLAGS="%{rpmcflags} -falign-functions=4" \
+%else
 CFLAGS="%{rpmcflags}" \
 %endif
+%endif
 ./configure \
+	--host=%{_target_platform} \
 	--prefix=%{_prefix}
 
 cd src

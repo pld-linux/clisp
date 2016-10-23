@@ -1,0 +1,18 @@
+--- clisp-2.49/src/lispbibl.d~	2016-10-23 08:56:52.000000000 +0200
++++ clisp-2.49/src/lispbibl.d	2016-10-23 09:00:09.471732823 +0200
+@@ -203,8 +203,13 @@
+   #ifdef __ia64__
+     #define IA64
+   #endif
+-  #if defined(__x86_64__) || defined(__amd64__)
+-    #define AMD64
++  #if defined(__x86_64__) || defined(__amd64__)
++    #if defined(__ILP32__)
++      #define I80386
++      #define NO_ARI_ASM
++    #else
++      #define AMD64
++    #endif
+   #endif
+   #ifdef __s390__
+     #define S390
