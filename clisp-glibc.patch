@@ -1,6 +1,6 @@
---- clisp-2.49/modules/bindings/glibc/linux.lisp~	2008-10-08 18:36:19.000000000 +0200
-+++ clisp-2.49/modules/bindings/glibc/linux.lisp	2012-12-12 12:50:41.830606483 +0100
-@@ -67,7 +66,7 @@
+--- clisp-2.49/modules/bindings/glibc/linux.lisp.orig	2008-10-08 18:36:19.000000000 +0200
++++ clisp-2.49/modules/bindings/glibc/linux.lisp	2017-12-05 15:58:10.508428262 +0100
+@@ -67,7 +67,7 @@
  (def-c-type __daddr_t)          ; int
  (def-c-type __caddr_t)          ; c-pointer
  (def-c-type __time_t)           ; long
@@ -18,7 +18,7 @@
  (def-c-type __ipc_pid_t)        ; ushort
  
  ; --------------------------- <sys/types.h> -----------------------------------
-@@ -294,6 +294,8 @@
+@@ -293,6 +293,8 @@
  ;; for robust mutexes
  (def-c-const EOWNERDEAD (:documentation "Owner died")) ; 130
  (def-c-const ENOTRECOVERABLE (:documentation "State not recoverable")) ; 131
@@ -27,3 +27,11 @@
  
  ; -------------------------- <bits/errno.h> -----------------------------------
  
+@@ -648,7 +650,6 @@
+ (def-call-out calloc (:arguments (nmemb size_t) (size size_t))
+   (:return-type c-pointer))
+ (def-call-out free (:arguments (ptr c-pointer)) (:return-type nil))
+-(def-call-out cfree (:arguments (ptr c-pointer)) (:return-type nil))
+ (def-call-out valloc (:arguments (size size_t)) (:return-type c-pointer))
+ 
+ (def-call-out abort (:arguments) (:return-type nil))

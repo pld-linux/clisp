@@ -1,5 +1,6 @@
 # TODO:
 # - review alpha patch
+# - unpackaged files (see the end of spec)
 #
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
@@ -9,8 +10,8 @@ Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.49
-Release:	6
-License:	GPL
+Release:	7
+License:	GPL v2
 Group:		Development/Languages
 Source0:	http://download.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
 # Source0-md5:	1962b99d5e530390ec3829236d168649
@@ -94,7 +95,6 @@ software livre, distribuído sob os termos da GNU GPL.
 #%{__perl} -pi -e "s@' -O2?([^0])@' %{rpmcflags} -fno-strict-aliasing\$1@" src/makemake.in
 
 %build
-
 %ifarch ppc ppc64
 ulimit -s unlimited
 %else
