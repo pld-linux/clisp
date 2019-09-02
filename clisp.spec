@@ -1,6 +1,8 @@
 # TODO:
 # - review alpha patch
 # - unpackaged files (see the end of spec)
+# - there is newer clisp release available at https://gitlab.com/gnu-clisp/clisp.git
+#   and in some distros (ie. Fedora/Rawhide)
 #
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
@@ -10,7 +12,7 @@ Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.49
-Release:	8
+Release:	9
 License:	GPL v2
 Group:		Development/Languages
 Source0:	http://download.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
@@ -21,6 +23,8 @@ Patch2:		%{name}-glibc.patch
 # https://sourceforge.net/p/clisp/bugs/688/attachment/patch-modules_readline_readline.lisp
 Patch3:		%{name}-readline.patch
 Patch4:		x32.patch
+Patch5:		x86.patch
+Patch6:		gcc.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-tools
@@ -87,6 +91,10 @@ software livre, distribuído sob os termos da GNU GPL.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
+%ifarch %{ix86}
+%patch5 -p1
+%endif
+%patch6 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
