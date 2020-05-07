@@ -21,13 +21,7 @@ Group:		Development/Languages
 Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}-%{version_date}/clisp-clisp-%{version}-%{version_date}.tar.bz2
 # Source0-md5:	57be9eac0883590760dcc2fc24fc0fd6
 Patch0:		%{name}-shell.patch
-Patch1:		%{name}-alpha.patch
-Patch2:		%{name}-glibc.patch
-# https://sourceforge.net/p/clisp/bugs/688/attachment/patch-modules_readline_readline.lisp
-Patch3:		%{name}-readline.patch
-Patch4:		x32.patch
-Patch5:		x86.patch
-Patch6:		gcc.patch
+Patch1:		x32.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-tools
@@ -90,14 +84,7 @@ software livre, distribuído sob os termos da GNU GPL.
 %prep
 %setup -q -n clisp-clisp-%{version}-%{version_date}
 %patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p0
-%patch4 -p1
-%ifarch %{ix86}
-#%patch5 -p1
-%endif
-#%patch6 -p1
+%patch1 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
