@@ -7,16 +7,19 @@
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
 #
+%define		version_date	2018-02-18
+%define		snap		%(echo %{version_date}|tr -d -)
+
 Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.49
-Release:	10
+Version:	2.49.92
+Release:	0.%{snap}.1
 License:	GPL v2
 Group:		Development/Languages
-Source0:	http://download.sourceforge.net/clisp/%{name}-%{version}.tar.bz2
-# Source0-md5:	1962b99d5e530390ec3829236d168649
+Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}-%{version_date}/clisp-clisp-%{version}-%{version_date}.tar.bz2
+# Source0-md5:	57be9eac0883590760dcc2fc24fc0fd6
 Patch0:		%{name}-shell.patch
 Patch1:		%{name}-alpha.patch
 Patch2:		%{name}-glibc.patch
@@ -85,16 +88,16 @@ o Common Lisp descrito pelo padrão ANSI CL. Além disso, CLISP é
 software livre, distribuído sob os termos da GNU GPL.
 
 %prep
-%setup -q
+%setup -q -n clisp-clisp-%{version}-%{version_date}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p0
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p0
 %patch4 -p1
 %ifarch %{ix86}
-%patch5 -p1
+#%patch5 -p1
 %endif
-%patch6 -p1
+#%patch6 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
@@ -132,7 +135,6 @@ cd src
 	--with-gettext \
 	--with-dynamic-ffi \
 	--fsstnd=redhat \
-	--with-module=wildcard \
 	--with-module=bindings/glibc \
 	--with-module=clx/new-clx \
 	>Makefile
@@ -182,7 +184,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/clisp/dynmod/*.lisp
 %attr(755,root,root) %{_libdir}/clisp/dynmod/lib-*.so
 %{_libdir}/clisp/linkkit
-%{_libdir}/clisp/wildcard
 %{_aclocaldir}/clisp.m4
 %{_mandir}/man1/clisp.1*
 %{_mandir}/man1/clisp-link.1*
