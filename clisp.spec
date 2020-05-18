@@ -7,19 +7,16 @@
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
 #
-%define		version_date	2018-02-18
-%define		snap		%(echo %{version_date}|tr -d -)
-
 Summary:	Common Lisp (ANSI CL) implementation
 Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
-Version:	2.49.92
-Release:	0.%{snap}.1
+Version:	2.50
+Release:	0.1
 License:	GPL v2
 Group:		Development/Languages
-Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}-%{version_date}/clisp-clisp-%{version}-%{version_date}.tar.bz2
-# Source0-md5:	57be9eac0883590760dcc2fc24fc0fd6
+Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}/clisp-clisp-%{version}.tar.bz2
+# Source0-md5:	e1813423a98973c2a43b3690c563c024
 Patch0:		%{name}-shell.patch
 Patch1:		x32.patch
 URL:		http://clisp.cons.org/
@@ -82,7 +79,7 @@ o Common Lisp descrito pelo padrão ANSI CL. Além disso, CLISP é
 software livre, distribuído sob os termos da GNU GPL.
 
 %prep
-%setup -q -n clisp-clisp-%{version}-%{version_date}
+%setup -q -n clisp-clisp-%{version}
 %patch0 -p1
 %patch1 -p1
 
