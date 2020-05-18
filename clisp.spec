@@ -4,6 +4,14 @@
 # - there is newer clisp release available at https://gitlab.com/gnu-clisp/clisp.git
 #   and in some distros (ie. Fedora/Rawhide)
 #
+#warning: Installed (but unpackaged) file(s) found:
+#	/usr/share/emacs/site-lisp/clhs.el
+#	/usr/share/emacs/site-lisp/clisp-coding.el
+#	/usr/share/emacs/site-lisp/clisp-ffi.el
+#	/usr/share/emacs/site-lisp/clisp-indent.el
+#	/usr/share/emacs/site-lisp/clisp-indent.lisp
+#	/usr/share/vim/vimfiles/after/syntax/lisp.vim
+#
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
 #
@@ -171,11 +179,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/clisp.m4
 %{_mandir}/man1/clisp.1*
 %{_mandir}/man1/clisp-link.1*
-
-# TODO:
-#%{_datadir}/emacs/site-lisp/clhs.el
-#%{_datadir}/emacs/site-lisp/clisp-coding.el
-#%{_datadir}/emacs/site-lisp/clisp-ffi.el
-#%{_datadir}/emacs/site-lisp/clisp-indent.el
-#%{_datadir}/emacs/site-lisp/clisp-indent.lisp
-#%{_datadir}/vim/vimfiles/after/syntax/lisp.vim
