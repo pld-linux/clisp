@@ -1,16 +1,7 @@
 # TODO:
-# - review alpha patch
 # - unpackaged files (see the end of spec)
 # - there is newer clisp release available at https://gitlab.com/gnu-clisp/clisp.git
 #   and in some distros (ie. Fedora/Rawhide)
-#
-#warning: Installed (but unpackaged) file(s) found:
-#	/usr/share/emacs/site-lisp/clhs.el
-#	/usr/share/emacs/site-lisp/clisp-coding.el
-#	/usr/share/emacs/site-lisp/clisp-ffi.el
-#	/usr/share/emacs/site-lisp/clisp-indent.el
-#	/usr/share/emacs/site-lisp/clisp-indent.lisp
-#	/usr/share/vim/vimfiles/after/syntax/lisp.vim
 #
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
@@ -85,6 +76,30 @@ Haible, da Universidade Karlsruhe, e Michael Stoll, da Universidade de
 Munique, ambas na Alemanha. O CLISP é quase totalmente compatível com
 o Common Lisp descrito pelo padrão ANSI CL. Além disso, CLISP é
 software livre, distribuído sob os termos da GNU GPL.
+
+%package -n emacs-clisp-mode
+Summary:	CLISP mode for Emacs
+Summary(pl.UTF-8):	Tryb edycji CLISP dla Emacsa
+Group:		Applications/Editors
+Requires:	emacs-common
+
+%description -n emacs-clisp-mode
+CLISP mode for Emacs.
+
+%description -n emacs-clisp-mode -l pl.UTF-8
+Tryb edycji CLISP dla Emacsa.
+
+%package -n vim-syntax-lisp
+Summary:	LISP syntax highlighting for Vim
+Summary(pl.UTF-8):	Podświetlanie składni LISP-a w Vimie
+Group:		Applications/Editors
+Requires:	vim-rt
+
+%description -n vim-syntax-lisp
+LISP syntax highlighting for Vim.
+
+%description -n vim-syntax-lisp -l pl.UTF-8
+Podświetlanie składni LISP-a w Vimie.
 
 %prep
 %setup -q -n clisp-clisp-%{version}
@@ -179,3 +194,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/clisp.m4
 %{_mandir}/man1/clisp.1*
 %{_mandir}/man1/clisp-link.1*
+
+%files -n emacs-clisp-mode
+%defattr(644,root,root,755)
+%{_lispdir}/clhs.el
+%{_lispdir}/clisp-coding.el
+%{_lispdir}/clisp-ffi.el
+%{_lispdir}/clisp-indent.el
+%{_lispdir}/clisp-indent.lisp
+
+%files -n vim-syntax-lisp
+%defattr(644,root,root,755)
+%{_datadir}/vim/vimfiles/after/syntax/lisp.vim
