@@ -11,7 +11,7 @@ Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.50
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Development/Languages
 Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}/clisp-clisp-%{version}.tar.bz2
@@ -21,12 +21,22 @@ Patch1:		x32.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-tools
-BuildRequires:	libsigsegv >= 2.4
+BuildRequires:	libsigsegv-devel >= 2.4
+BuildRequires:	libunistring-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
+BuildRequires:	xorg-lib-libICE-devel
+BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXau-devel
+BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-proto-xextproto-devel
+Requires:	ffcall-devel
+Requires:	libsigsegv-devel >= 2.4
+Requires:	libunistring-devel
+Requires:	ncurses-devel
+Requires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define specflags_ppc	-DNO_GENERATIONAL_GC
