@@ -1,7 +1,3 @@
-# TODO:
-# - unpackaged files (see the end of spec)
-# - there is newer clisp release available at https://gitlab.com/gnu-clisp/clisp.git
-#   and in some distros (ie. Fedora/Rawhide)
 #
 # Conditional build:
 %bcond_with	tests	# run test suite `make check' (uses network, won't pass on vserver)
@@ -14,6 +10,7 @@ Version:	2.50
 Release:	2
 License:	GPL v2
 Group:		Development/Languages
+#Source0Download: https://gitlab.com/gnu-clisp/clisp/-/tags  (2.50 is a not a tag, but branch with no release yet???)
 Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}/clisp-clisp-%{version}.tar.bz2
 # Source0-md5:	e1813423a98973c2a43b3690c563c024
 Patch0:		%{name}-shell.patch
