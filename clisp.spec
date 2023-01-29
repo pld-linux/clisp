@@ -17,6 +17,7 @@ Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}/clisp-cli
 Patch0:		%{name}-shell.patch
 Patch1:		x32.patch
 URL:		http://clisp.cons.org/
+BuildRequires:	automake
 BuildRequires:	db-devel
 BuildRequires:	dbus-devel
 BuildRequires:	fcgi-devel
