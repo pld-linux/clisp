@@ -23,6 +23,7 @@ BuildRequires:	fcgi-devel
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-tools
 BuildRequires:	gdbm-devel
+BuildRequires:	groff
 BuildRequires:	gtk+2-devel >= 2.0
 BuildRequires:	libglade2-devel >= 2.0
 BuildRequires:	libsigsegv-devel >= 2.4
