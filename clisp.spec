@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.50
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Development/Languages
 #Source0Download: https://gitlab.com/gnu-clisp/clisp/-/tags  (2.50 is a not a tag, but branch with no release yet???)
