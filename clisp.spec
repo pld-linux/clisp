@@ -272,8 +272,8 @@ Podświetlanie składni LISP-a w Vimie.
 
 %prep
 %setup -q -n clisp-clisp-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
