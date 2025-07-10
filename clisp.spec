@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Implementacja Common Lisp (ANSI CL)
 Summary(pt_BR.UTF-8):	Implementação do Common Lisp (ANSI CL)
 Name:		clisp
 Version:	2.50
-Release:	4
+Release:	5
 License:	GPL v2
 Group:		Development/Languages
 #Source0Download: https://gitlab.com/gnu-clisp/clisp/-/tags  (2.50 is a not a tag, but branch with no release yet???)
@@ -16,6 +16,8 @@ Source0:	https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-%{version}/clisp-cli
 # Source0-md5:	e1813423a98973c2a43b3690c563c024
 Patch0:		%{name}-shell.patch
 Patch1:		x32.patch
+Patch2:		%{name}-bdb-git.patch
+Patch3:		%{name}-gdbm.patch
 URL:		http://clisp.cons.org/
 BuildRequires:	automake
 BuildRequires:	db-devel
@@ -23,7 +25,7 @@ BuildRequires:	dbus-devel
 BuildRequires:	fcgi-devel
 BuildRequires:	ffcall-devel
 BuildRequires:	gettext-tools
-BuildRequires:	gdbm-devel
+BuildRequires:	gdbm-devel >= 1.15
 BuildRequires:	groff
 BuildRequires:	gtk+2-devel >= 2.0
 BuildRequires:	libglade2-devel >= 2.0
@@ -274,6 +276,8 @@ Podświetlanie składni LISP-a w Vimie.
 %setup -q -n clisp-clisp-%{version}
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 # changing default -O to optflags causes memory fault on amd64
 # - so something is broken... code or compiler
@@ -282,6 +286,9 @@ Podświetlanie składni LISP-a w Vimie.
 #%{__perl} -pi -e "s@' -O2?([^0])@' %{rpmcflags} -fno-strict-aliasing\$1@" src/makemake.in
 
 %build
+cd modules/berkeley-db
+%{__autoconf} --include ../../src
+cd ../..
 %ifarch ppc ppc64
 ulimit -s unlimited
 %else

@@ -1,0 +1,20 @@
+--- clisp-clisp-2.50/modules/gdbm/gdbm.c.orig	2018-09-22 18:54:56.000000000 +0200
++++ clisp-clisp-2.50/modules/gdbm/gdbm.c	2025-07-10 18:11:36.563348246 +0200
+@@ -66,7 +66,7 @@ DEFCHECKER(check_gdbm_errno, prefix=GDBM
+            READER-CANT-REORGANIZE UNKNOWN-UPDATE ITEM-NOT-FOUND              \
+            REORGANIZE-FAILED CANNOT-REPLACE ILLEGAL-DATA OPT-ALREADY-SET     \
+            OPT-ILLEGAL)
+-static _Noreturn void error_gdbm (char *fatal_message) {
++static _Noreturn void error_gdbm (const char *fatal_message) {
+   end_blocking_system_call(); /* in case we are called from _gdbm_fatal() */
+   pushSTACK(`GDBM::GDBM-ERROR`);
+   pushSTACK(`:MESSAGE`);
+@@ -126,7 +126,7 @@ static object open_gdbm (object path, in
+   GDBM_FILE gdbm;
+   with_string_0(path, GLO(pathname_encoding), name, {
+       SYSCALL(gdbm = gdbm_open(name, bsize, rw, mode,
+-                               (void (*)(void))error_gdbm));
++                               error_gdbm));
+     });
+   if (gdbm == NULL) error_gdbm(NULL);
+   return allocate_fpointer(gdbm);
